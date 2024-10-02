@@ -1,6 +1,17 @@
-import { Box, Button, Container, Typography } from "@mui/material";
+"use client";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Container,
+  Typography,
+} from "@mui/material";
+import React from "react";
 
 export default function Home() {
+  const { user, isLoading } = useUser();
+
   return (
     <main>
       <Box sx={{ width: "100%", height: "100%", position: "absolute" }}>
@@ -15,12 +26,26 @@ export default function Home() {
             justifyContent: "center",
           }}
         >
-          <Typography align="center">
-            Welcome to your Personal Finance App.
-          </Typography>
-          <Button type="button" href="/api/auth/login">
-            Login
-          </Button>
+          {isLoading ? (
+            <CircularProgress />
+          ) : (
+            <>
+              <Typography align="center">
+                {user ? `Welcome ${user?.name}` : "Welcome"} to your Personal
+                Finance App.
+              </Typography>
+
+              {user ? (
+                <Button type="button" href="/api/auth/logout">
+                  Logout
+                </Button>
+              ) : (
+                <Button type="button" href="/api/auth/login">
+                  Login
+                </Button>
+              )}
+            </>
+          )}
         </Container>
       </Box>
     </main>
