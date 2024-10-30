@@ -1,0 +1,12 @@
+services:
+  pfa_nextjs:
+    build: .
+    container_name: pfa_nextjs
+    env_file: .env.local
+    ports: 
+      - 3000:3000
+    stdin_open: true
+    tty: true
+    volumes: 
+      - "./app:/app:delegated"
+      - /app/node_modules/ 
