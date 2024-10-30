@@ -69,7 +69,11 @@ export default function Home() {
                   Logout
                 </Button>
               ) : (
-                <Button type="button" href="/api/auth/login">
+                <Button
+                  type="button"
+                  href="/api/auth/login"
+                  data-testid="LoginBtn"
+                >
                   Login
                 </Button>
               )}
