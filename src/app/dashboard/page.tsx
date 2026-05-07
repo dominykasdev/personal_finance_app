@@ -14,7 +14,7 @@ export default function ProfileClient() {
       <div>
         <img src={user.picture} alt={user.name} />
         <h2>{user.name}</h2>
-        <p>{user.email}</p>
+        <p>{user.email === user.name ? "" : user.email}</p>
 
         <Button type="button" href="/api/auth/logout">
           Logout

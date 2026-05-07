@@ -1,4 +1,3 @@
-"use client";
 import { Button, Container, TextField } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { FormEvent, useEffect, useState } from "react";
@@ -7,13 +6,14 @@ interface Data {
   message: string;
 }
 
-export default function LoginPage({
-  params,
-  searchParams,
-}: {
-  params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
+export default function LoginPage() {
+  //   {
+  //   params,
+  //   searchParams,
+  // }: {
+  //   params: { slug: string };
+  //   searchParams: { [key: string]: string | string[] | undefined };
+  // }
   const router = useRouter();
 
   async function handleLogin(event: FormEvent<HTMLFormElement>) {
